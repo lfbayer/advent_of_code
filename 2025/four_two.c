@@ -3,8 +3,6 @@
 #include <string.h>
 #include <unistd.h>
 
-#define BATTERY_COUNT 12
-
 static int ROW_COUNT = 140;
 static int ROW_LENGTH = 140;
 

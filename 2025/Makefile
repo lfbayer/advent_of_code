@@ -5,7 +5,7 @@ CC=gcc
 
 CFLAGS=-g
 
-SRC_FILES=main.c one.c two.c three.c four.c four_two.c
+SRC_FILES=main.c one.c two.c three.c four.c four_two.c seven.c
 OBJ=$(SRC_FILES:%.c=%.o)
 
 $(PROGNAME): $(OBJ)
