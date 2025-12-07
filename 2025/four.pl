@@ -22,9 +22,9 @@ unshift(@$rows, \@empty_row);
 push(@$rows, \@empty_row);
 
 my $reachable_count = 0;
-foreach my $x (1 .. $width) {
-    foreach my $y (1 .. $height) {
-        my $value = $$rows[$x][$y];
+foreach my $y (1 .. $height) {
+    foreach my $x (1 .. $width) {
+        my $value = $$rows[$y][$x];
         if ($value ne '@') {
             print $value;
             next;
@@ -33,37 +33,37 @@ foreach my $x (1 .. $width) {
         my $count = 0;
 
         # Previous Row
-        if ($$rows[$x - 1][$y - 1] eq '@') {
+        if ($$rows[$y - 1][$x - 1] eq '@') {
             $count++;
         }
 
-        if ($$rows[$x][$y - 1] eq '@') {
+        if ($$rows[$y][$x - 1] eq '@') {
             $count++;
         }
 
-        if ($$rows[$x + 1][$y - 1] eq '@') {
+        if ($$rows[$y + 1][$x - 1] eq '@') {
             $count++;
         }
 
         # Same Row
-        if ($$rows[$x - 1][$y] eq '@') {
+        if ($$rows[$y - 1][$x] eq '@') {
             $count++;
         }
 
-        if ($$rows[$x + 1][$y] eq '@') {
+        if ($$rows[$y + 1][$x] eq '@') {
             $count++;
         }
 
         # Next Row
-        if ($$rows[$x - 1][$y + 1] eq '@') {
+        if ($$rows[$y - 1][$x + 1] eq '@') {
             $count++;
         }
 
-        if ($$rows[$x][$y + 1] eq '@') {
+        if ($$rows[$y][$x + 1] eq '@') {
             $count++;
         }
 
-        if ($$rows[$x + 1][$y + 1] eq '@') {
+        if ($$rows[$y + 1][$x + 1] eq '@') {
             $count++;
         }
 

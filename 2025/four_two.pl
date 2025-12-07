@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my $rows;
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     chomp($line);
     my @row = split(//, $line);
     unshift(@row, '.');
@@ -28,9 +28,9 @@ my $last_count;
 do {
     $last_count = $reachable_count;
 
-    foreach my $x (1 .. $width) {
-        foreach my $y (1 .. $height) {
-            my $value = $$rows[$x][$y];
+    foreach my $y (1 .. $height) {
+        foreach my $x (1 .. $width) {
+            my $value = $$rows[$y][$x];
             if ($value ne '@') {
                 print $value;
                 next;
@@ -39,44 +39,44 @@ do {
             my $count = 0;
 
             # Previous Row
-            if ($$rows[$x - 1][$y - 1] eq '@') {
+            if ($$rows[$y - 1][$x - 1] eq '@') {
                 $count++;
             }
 
-            if ($$rows[$x][$y - 1] eq '@') {
+            if ($$rows[$y][$x - 1] eq '@') {
                 $count++;
             }
 
-            if ($$rows[$x + 1][$y - 1] eq '@') {
+            if ($$rows[$y + 1][$x - 1] eq '@') {
                 $count++;
             }
 
             # Same Row
-            if ($$rows[$x - 1][$y] eq '@') {
+            if ($$rows[$y - 1][$x] eq '@') {
                 $count++;
             }
 
-            if ($$rows[$x + 1][$y] eq '@') {
+            if ($$rows[$y + 1][$x] eq '@') {
                 $count++;
             }
 
             # Next Row
-            if ($$rows[$x - 1][$y + 1] eq '@') {
+            if ($$rows[$y - 1][$x + 1] eq '@') {
                 $count++;
             }
 
-            if ($$rows[$x][$y + 1] eq '@') {
+            if ($$rows[$y][$x + 1] eq '@') {
                 $count++;
             }
 
-            if ($$rows[$x + 1][$y + 1] eq '@') {
+            if ($$rows[$y + 1][$x + 1] eq '@') {
                 $count++;
             }
 
             if ($count < 4) {
                 print 'x';
 
-                $$rows[$x][$y] = '.';
+                $$rows[$y][$x] = '.';
 
                 $reachable_count++;
             }
@@ -88,7 +88,7 @@ do {
         print "\n";
     }
 
-    sleep(1);
+    # sleep(1);
     print (("=") x $width);
     print "\n";
 }
