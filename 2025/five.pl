@@ -5,7 +5,7 @@ use warnings;
 
 my $ranges = ();
 
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     chomp($line);
 
     last if ($line eq '');
@@ -19,7 +19,7 @@ while (my $line = <STDIN>) {
 }
 
 my $fresh_count = 0;
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     chomp($line);
 
     print "Testing $line\n";

@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 my $rows;
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     chomp($line);
     my @row = split(//, $line);
     unshift(@row, '.');

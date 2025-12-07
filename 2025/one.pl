@@ -3,7 +3,7 @@
 my $position = 50;
 
 my $zero_count = 0;
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     my ($direction, $offset) = $line =~ /([RL])(\d+)/;
 
     my $delta = $direction eq 'L' ? -1 : 1;

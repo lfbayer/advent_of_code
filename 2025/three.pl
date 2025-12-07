@@ -7,7 +7,7 @@ my $battery_count = 12;
 
 my $total_max_power = 0;
 
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     chomp($line);
 
     my @digits = split(//, $line);

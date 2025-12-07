@@ -4,14 +4,14 @@ use strict;
 use warnings;
 
 my $invalid_sum = 0;
-while (my $line = <STDIN>) {
+while (my $line = <>) {
     while ($line =~ /(\d+)-(\d+),?/g) {
         my $start = $1;
         my $end = $2;
 
         print "Handling range '$start-$end'\n";
         for my $id ($start .. $end) {
-            print $id, "\n";
+            # print $id, "\n";
 
             if ($id =~ /^(\d+)\1+$/) {
                 print "Invalid: $id\n";
