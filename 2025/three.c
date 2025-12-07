@@ -6,18 +6,16 @@
 
 static int BUFFER_LEN = 500;
 
-int ctoi(char c) {
-    return c - '0';
-}
-
 void run_three(FILE* input) {
     char line[BUFFER_LEN];
+
+    int maxIndexes[BATTERY_COUNT];
+    char maxPowerBuf[BATTERY_COUNT + 1]; // The +1 is a '\0' automatically
+
     long totalMaxPower = 0;
 
     while (fgets(line, BUFFER_LEN, input) != NULL) {
         size_t len = strlen(line);
-
-        int maxIndexes[BATTERY_COUNT] = {0};
 
         int maxIndex = 0;
         for (int pass = 0; pass < BATTERY_COUNT; pass++) {
@@ -30,17 +28,13 @@ void run_three(FILE* input) {
             maxIndexes[pass] = maxIndex;
             maxIndex++;
         }
-
-        char maxPower[BUFFER_LEN];        
-        int i = 0;
-        while (i < BATTERY_COUNT) {
-            maxPower[i] = line[maxIndexes[i]];
-            i++;
+        
+        for (int i = 0; i < BATTERY_COUNT; i++) {
+            maxPowerBuf[i] = line[maxIndexes[i]];
         }
-        maxPower[i] = '\0';
 
-        printf("Max Power: %s\n", maxPower);
-        totalMaxPower += atol(maxPower);
+        printf("Max Power: %s\n", maxPowerBuf);
+        totalMaxPower += atol(maxPowerBuf);
     }
 
     printf("Total Max Power: %ld\n", totalMaxPower);
